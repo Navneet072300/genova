@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       messages,
     });
 
-    return completion.choices[0].message;
+    return NextResponse.json(completion.choices[0].message);
   } catch (error) {
     console.error("[CONVERSATION_ERROR]", error);
     return new NextResponse("Internal Error", { status: 500 });
