@@ -25,11 +25,11 @@ export async function POST(req: Request) {
     }
 
     const completion = await openAi.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-4o-mini",
       messages,
     });
 
-    return NextResponse.json(completion.choices[0].message);
+    return completion.choices[0].message;
   } catch (error) {
     console.error("[CONVERSATION_ERROR]", error);
     return new NextResponse("Internal Error", { status: 500 });
